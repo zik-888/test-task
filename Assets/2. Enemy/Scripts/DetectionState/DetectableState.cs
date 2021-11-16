@@ -14,7 +14,7 @@ public abstract class DetectableState
     // protected StateEnum State = StateEnum.NotDetectedState;
     protected Image Image { set; get; }
 
-    protected ILevelController LevelController;
+    protected ILevelEventHandler LevelEventHandler;
 
     protected EnemyMovement EnemyMovement;
 
@@ -24,10 +24,10 @@ public abstract class DetectableState
         set => Image.fillAmount = value;
     }
 
-    public DetectableState(Image image, ILevelController levelController, EnemyMovement enemyMovement)
+    public DetectableState(Image image, ILevelEventHandler levelEventHandler, EnemyMovement enemyMovement)
     {
         Image = image;
-        LevelController = levelController;
+        LevelEventHandler = levelEventHandler;
         EnemyMovement = enemyMovement;
     }
 

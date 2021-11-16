@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public interface ILevelController
+public interface ILevelEventHandler
 {
     void MissionEventInvoke(MissionPart missionPart, GameObject obj);
 }

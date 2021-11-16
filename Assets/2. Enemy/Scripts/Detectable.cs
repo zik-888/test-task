@@ -22,11 +22,11 @@ public class Detectable : MonoBehaviour
 
 
     [Inject]
-    private void Construct(Detection heroDetection, ILevelController levelController)
+    private void Construct(Detection heroDetection, ILevelEventHandler levelEventHandler)
     {
         heroDetection.Notify += DetectableHandler;
         var enemyMovement = GetComponent<EnemyMovement>();
-        State = new NotDetectedState(image, levelController, enemyMovement);
+        State = new NotDetectedState(image, levelEventHandler, enemyMovement);
     }
 
     private void DetectableHandler(int enemyId)

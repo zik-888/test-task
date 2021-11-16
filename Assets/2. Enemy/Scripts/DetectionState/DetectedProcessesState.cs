@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 class DetectedProcessesState : DetectableState
 {
-    public DetectedProcessesState(Image image, ILevelController levelController, EnemyMovement enemyMovement) : base(image, levelController, enemyMovement)
+    public DetectedProcessesState(Image image, ILevelEventHandler levelEventHandler, EnemyMovement enemyMovement) : base(image, levelEventHandler, enemyMovement)
     {
     }
     
@@ -13,12 +13,12 @@ class DetectedProcessesState : DetectableState
         if (value >= 1)
         {
             Debug.Log($"{EnemyMovement} - new DetectedState");
-            detectable.State = new DetectedState(Image, LevelController, EnemyMovement);
+            detectable.State = new DetectedState(Image, LevelEventHandler, EnemyMovement);
             return false;
         }
         else if (value <= 0)
         {
-            detectable.State = new NotDetectedState(Image, LevelController, EnemyMovement);
+            detectable.State = new NotDetectedState(Image, LevelEventHandler, EnemyMovement);
         }
         else
         {

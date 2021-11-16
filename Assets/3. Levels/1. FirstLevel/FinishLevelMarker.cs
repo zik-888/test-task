@@ -7,13 +7,13 @@ using Zenject;
 public class FinishLevelMarker : MonoBehaviour
 {
     private Collider _heroCollider;
-    private ILevelController _levelController;
+    private ILevelEventHandler _levelEventHandler;
     
     [Inject]
-    private void Construct(Detection heroDetection, ILevelController levelController)
+    private void Construct(Detection heroDetection, ILevelEventHandler levelEventHandler)
     {
         _heroCollider = heroDetection.gameObject.GetComponent<Collider>();
-        _levelController = levelController;
+        _levelEventHandler = levelEventHandler;
     }
     
     private void OnTriggerEnter(Collider other)
@@ -21,7 +21,7 @@ public class FinishLevelMarker : MonoBehaviour
         if (other == _heroCollider)
         {
             print("Hero - OnTriggerEnter");
-            _levelController.MissionEventInvoke(MissionPart.FinishMarkerAchieved, gameObject);
+            _levelEventHandler.MissionEventInvoke(MissionPart.FinishMarkerAchieved, gameObject);
         }
     }
 

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 class NotDetectedState : DetectableState
 {
-    public NotDetectedState(Image image, ILevelController levelController, EnemyMovement enemyMovement) : base(image, levelController, enemyMovement)
+    public NotDetectedState(Image image, ILevelEventHandler levelEventHandler, EnemyMovement enemyMovement) : base(image, levelEventHandler, enemyMovement)
     {
         // State = StateEnum.NotDetectedState;
         ValueIndicate = 0;
@@ -13,7 +13,7 @@ class NotDetectedState : DetectableState
     {
         if (value >= 0)
         {
-            detectable.State = new DetectedProcessesState(Image, LevelController, EnemyMovement);
+            detectable.State = new DetectedProcessesState(Image, LevelEventHandler, EnemyMovement);
         }
         else
         {

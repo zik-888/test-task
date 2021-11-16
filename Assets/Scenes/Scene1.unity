@@ -2246,7 +2246,7 @@ MonoBehaviour:
   - {fileID: 624711387}
   - {fileID: 1738833962}
   - {fileID: 1209890538}
-  missionController: {fileID: 845214644}
+  missionEventHandler: {fileID: 845214644}
 --- !u!1 &646784327
 GameObject:
   m_ObjectHideFlags: 0

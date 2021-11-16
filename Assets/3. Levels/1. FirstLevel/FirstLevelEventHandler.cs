@@ -16,7 +16,7 @@ public enum MissionPart
     EnemyReachedHero
 }
 
-public class FirstLevelController : MonoBehaviour, ILevelController
+public class FirstLevelEventHandler : MonoBehaviour, ILevelEventHandler
 {
     private event Action<MissionPart, GameObject> MissionEvent;
     
@@ -67,7 +67,7 @@ public class FirstLevelController : MonoBehaviour, ILevelController
         if (_enemyCounter == 0)
         {
             print("MissionComplete");
-            LevelScore.Status = "Mission complete!";
+            LevelScore.Status = $"Mission complete!";
         }
         else
         {

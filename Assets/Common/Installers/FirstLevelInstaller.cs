@@ -14,7 +14,7 @@ public class FirstLevelInstaller : MonoInstaller
 
     public Transform[] leaveMarkers;
 
-    public FirstLevelController missionController;
+    public FirstLevelEventHandler missionEventHandler;
 
     public override void InstallBindings()
     {
@@ -27,8 +27,8 @@ public class FirstLevelInstaller : MonoInstaller
     private void BindMissionController()
     {
         Container
-            .Bind<ILevelController>()
-            .FromInstance(missionController)
+            .Bind<ILevelEventHandler>()
+            .FromInstance(missionEventHandler)
             .AsSingle().NonLazy();
     }
 

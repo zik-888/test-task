@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 internal class DetectedState : DetectableState
 {
-    public DetectedState(Image image, ILevelController levelController, EnemyMovement enemyMovement) : base(image, levelController, enemyMovement)
+    public DetectedState(Image image, ILevelEventHandler levelEventHandler, EnemyMovement enemyMovement) : base(image, levelEventHandler, enemyMovement)
     {
         SetDetected();
     }
@@ -14,7 +14,7 @@ internal class DetectedState : DetectableState
     private void SetDetected()
     {
         ValueIndicate = 1;
-        LevelController.MissionEventInvoke(MissionPart.OneEnemyDestroy, EnemyMovement.gameObject);
+        LevelEventHandler.MissionEventInvoke(MissionPart.OneEnemyDestroy, EnemyMovement.gameObject);
         EnemyMovement.isFinding = false;
         EnemyMovement.OffendedLeave();
     }

@@ -18,16 +18,16 @@ namespace Enemy
         public bool isFinding = true;
 
         private EnemyLeaveMarker _enemyLeaveMarker;
-        private ILevelController _levelController;
+        private ILevelEventHandler _levelEventHandler;
         [SerializeField] private float maxWaitForSeconds = 5;
         [SerializeField] private float minWaitForSeconds = 15;
         [SerializeField] private float randomWait;
 
         [Inject]
-        private void Construct(Detection heroDetection, ILevelController levelController, EnemyLeaveMarker[] leaveMarkers)
+        private void Construct(Detection heroDetection, ILevelEventHandler levelEventHandler, EnemyLeaveMarker[] leaveMarkers)
         {
             _heroTransform = heroDetection.transform;
-            _levelController = levelController;
+            _levelEventHandler = levelEventHandler;
             
             
             if(leaveMarkers.Length > 0)
@@ -61,7 +61,7 @@ namespace Enemy
                 else
                 {
                     isFinding = false;
-                    _levelController.MissionEventInvoke(MissionPart.EnemyReachedHero, gameObject);
+                    _levelEventHandler.MissionEventInvoke(MissionPart.EnemyReachedHero, gameObject);
                 }
                 
                 yield return new WaitForFixedUpdate();
